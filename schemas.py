@@ -6,5 +6,5 @@ class DiaryDay(BaseModel):
     date: date
     location: str = None
     location_on_map: str = None
-    previewText: str = None
+    preview_text: str = None
     text: str
