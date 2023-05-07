@@ -31,7 +31,6 @@ def get_file_data(path) -> dict:
 
 @app.post('/adddiaryday')
 def add_diary_day(item: DiaryDay):
-    print(item)
     try:
         if not is_file_exist(pathDiary) or is_file_empty(pathDiary):
             with open(pathDiary, 'w') as write_file:
@@ -39,7 +38,7 @@ def add_diary_day(item: DiaryDay):
 
         data = get_file_data(pathDiary)
 
-        field_id = int(max(list(data.keys())))+1 if data else 1
+        item.id = field_id = int(max(list(data.keys())))+1 if data else 1
         data[field_id] = item.dict()
 
         with open(pathDiary, 'w') as write_file:
